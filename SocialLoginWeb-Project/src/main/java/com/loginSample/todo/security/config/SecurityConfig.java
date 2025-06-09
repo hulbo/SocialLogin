@@ -36,7 +36,7 @@ public class SecurityConfig {
 		.formLogin(form -> form
 			.loginPage("/login") // 커스텀 로그인 페이지 경로
 			.permitAll() // 로그인 페이지는 인증없이 접근가능
-			.defaultSuccessUrl("/todos", true) // 로그인 성공 시 "/todos"로 리다이렉트(항상)
+			//.defaultSuccessUrl("/todos", true) // 로그인 성공 시 "/todos"로 리다이렉트(항상)
 			.successHandler(authenticationSuccessHandler()) // 성공 핸들러
 			.failureHandler(authenticationFailureHandler()) // 실패 핸들러
 		)
