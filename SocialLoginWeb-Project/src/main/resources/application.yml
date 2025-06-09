@@ -10,10 +10,10 @@ spring:
     init:
       mode: always #초기 구동시 스크립트 실행
   datasource:
-    url: jdbc:oracle:thin:@158.180.84.18:1521:XE
+    url: ${DB_URL}
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    username: LHMTECH
-    password: LHMTECH
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     hikari:
       data-source-properties:
         oracle:
