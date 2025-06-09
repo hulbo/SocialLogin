@@ -27,6 +27,7 @@ public class UserService {
 		
 		// User객체 생성
 		User user = new User();
+		user.setUsername(username);
 		user.setPassword(password);
 		user.setPassword(passwordEncoder.encode(password)); // 사용자 비밀번호 암호화
 		

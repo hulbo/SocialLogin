@@ -5,11 +5,13 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 // Spring Security에서 사용자 정보 담는 클래스
 
 @RequiredArgsConstructor // final 필드 생성자
+@Data
 public class CustomUserDetails implements UserDetails {
 	
 	private static final long serialVersionUID = 1L; // 직렬화 버전 UID
