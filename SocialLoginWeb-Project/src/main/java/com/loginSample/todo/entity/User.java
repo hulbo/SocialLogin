@@ -24,6 +24,8 @@ public class User {
 	private String username; // 사용자 이름
 	private String password; // 사용자 비밀번호
 	
+	private String socialType; // 소셜 로그인 유형(예:google, kakao 등)
+	private String socialId; // 소셜 로그인 ID(외부에서 제공받은 정보)
 	
 	// 사용자와 할 일 간의 1:N 관계매핑
 	@OneToMany(mappedBy = "user")

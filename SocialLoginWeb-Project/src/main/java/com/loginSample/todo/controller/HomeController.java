@@ -15,7 +15,7 @@ public class HomeController {
 	public String login() {
 		return "login";
 	}
-	
+
 	@GetMapping("/logout")
 	public String logout() {
 		return "redirect:/login?logout"; // 로그아웃 후 "/login?logout" 경로로 리다이렉트
