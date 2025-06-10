@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -16,6 +15,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 import com.loginSample.todo.security.handler.CustomLoginFailureHandler;
 import com.loginSample.todo.security.handler.CustomLoginSuccessHandler;
+import com.loginSample.todo.security.service.CustomUserDetailsService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,7 +27,7 @@ public class SecurityConfig {
 	// OAuth2 로그인 사용자 정보 처리 서비스
 	private final OAuth2UserService<OAuth2UserRequest, OAuth2User> customOAuth2UserService;
 	
-	private final UserDetailsService customUserDetailsService;
+	private final CustomUserDetailsService customUserDetailsService;
 	
 	// 비밀번호 암호화를 위한 Bean등록
 	@Bean
@@ -44,6 +44,7 @@ public class SecurityConfig {
 				.requestMatchers("/", "/users/register", "/login", "/css/**", "/js/**").permitAll() // 누구나 접근 허용
 				.anyRequest().authenticated() // 그 외의 요청은 인증 필요
 		)
+		// 일반 로그인 처리 시 사용자 정보 조회 서비스 등록
 		.userDetailsService(customUserDetailsService)
 		// 폼 로그인 설정
 		.formLogin(form -> form

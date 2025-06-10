@@ -36,6 +36,16 @@ public class TodoController {
 	// 사용자 관리 서비스
     private final UserService userService;
 
+    /*
+    좀더 간결 한 소스
+    @AuthenticationPrincipal 를 사용하면 변환과정없이 customUser.getUsername() 사용이 가능하다.
+    @GetMapping
+    public String sample(@AuthenticationPrincipal CustomUserDetails customUser, Model model) {
+    	System.err.println(customUser.getUsername());
+    	return "";
+    }
+    */
+    
     // 사용자의 할 일 목록을 조회하여 뷰에 전달
     @GetMapping
     public String listTodos(Authentication authentication, Model model) {

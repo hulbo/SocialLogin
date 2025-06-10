@@ -44,11 +44,18 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
         this.password = null;  // OAuth2 사용자는 비밀번호가 없음
     }
 	
+    // 사용자 명
     @Override
 	public String getName() {
-		return username;  // OAuth2User에서 사용하는 name 속성
+		return username;
 	}
     
+    // 사용자 이름(예: 이메일)
+ 	@Override
+ 	public String getUsername() {
+ 		return username;
+ 	}
+ 	
 	// 사용자 권한정보 반환
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,12 +66,6 @@ public class CustomUserDetails implements UserDetails, OAuth2User {
 	@Override
 	public String getPassword() {
 		return password;
-	}
-
-	// 사용자 이름 반환
-	@Override
-	public String getUsername() {
-		return username;
 	}
 
 	// 계정 만료 여부(true = 만료되지 않음)
