@@ -16,8 +16,8 @@ import lombok.Data;
 public class Todo {
 	
 	@Id // 기본키지정
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_sl_todo")
-	@SequenceGenerator(name = "s_sl_todo", sequenceName = "s_sl_todo", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "s_sl_todos")
+	@SequenceGenerator(name = "s_sl_todos", sequenceName = "s_sl_todos", allocationSize = 1)
 	private Long id; // 할일고유 ID
 	
 	private String title; // 할 일 제목

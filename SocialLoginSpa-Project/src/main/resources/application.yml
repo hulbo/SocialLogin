@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: SocialLoginSpa-Project
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  sql:
+    init:
+      mode: always #초기 구동시 스크립트 실행
+  datasource:
+    url: ${DB_URL}
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    hikari:
+      data-source-properties:
+        oracle:
+          jdbc:
+            timezoneAsRegion: false
+  jpa:
+    hibernate:
+      ddl-auto: update # 테이블 생성 또는 업데이트
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_SOCIAL_ID}
+            client-secret: ${GOOGLE_SOCIAL_SECRET}
+            scope: profile, email
+
+logging:
+  level:
+    com.example: INFO
